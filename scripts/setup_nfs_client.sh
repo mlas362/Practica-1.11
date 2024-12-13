@@ -15,5 +15,9 @@ apt upgrade -y
 # Instalamos el cliente NFS
 apt install nfs-common -y
 
+sed -i "/LABEL=UEFI/a $NFS_SERVER_IP:/var/www/html /var/www/html  nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0" /etc/fstab
+
+systemctl daemon-reload
+
 # Hacemos el montaje 
-mount $IP_NFS_SERVER:/var/www/html /var/www/html
+mount $NFS_SERVER_IP:/var/www/html /var/www/html
