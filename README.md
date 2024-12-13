@@ -96,3 +96,7 @@ El archivo setup_nfs_server.sh se ejecutaría en la servidor NFS y el setup_nfs_
 ![comprobacion](capturas/captura2.png)
 
 Vemos como al hacer un df -h, en la IP del servidor NFS está montado el directorio /var/www/html
+
+a parte de esto tendremos todos los scripts que ya teníamos hecho de la práctica anterior que son los instal_lamp_frontend, el instal_lamp_backend, deploy_wordpress_frontend y backend, el certificado Let's encrypt y el setup_loadbalancer
+
+![comprobacion](capturas/captura3.png)
