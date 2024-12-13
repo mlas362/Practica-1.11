@@ -33,16 +33,16 @@ wp config create \
   --dbname=$WORDPRESS_DB_NAME \
   --dbuser=$WORDPRESS_DB_USER \
   --dbpass=$WORDPRESS_DB_PASSWORD \
-  --dbhost=$WORDPRESS_DB_HOST \
+  --dbhost=$BACKEND_PRIVATE_IP \
   --path=$WORDPRESS_DIRECTORY \
   --allow-root
 
 # Configuramos nuestro worpress
 wp core install \
   --url=$LE_DOMAIN \
-  --title=$TITLE \
-  --admin_user=$ADMIN_USER \
-  --admin_password=$ADMIN_PASSWORD \
+  --title=$WORDPRESS_TITULO \
+  --admin_user=$WORDPRESS_USER \
+  --admin_password=$WORDPRESS_PASSWORD \
   --admin_email=$ADMIN_EMAIL \
   --path=$WORDPRESS_DIRECTORY \
   --allow-root  
@@ -65,7 +65,7 @@ wp rewrite structure '/%postname%/' \
 cp ../htaccess/.htaccess $WORDPRESS_DIRECTORY
 
 # Configuramos la variable $_SERVER['HTTPS']
-sed -i "/COLLATE/a $_SERVER['HTTPS'] = 'on';" /var/www/html/wp-config.php
+sed -i "/COLLATE/a \$_SERVER['HTTPS'] = 'on';" /var/www/html/wp-config.php
 
 # Modificamos el propietario y el grupo del directorio /var/www/html
 chown -R www-data:www-data /var/www/html/
